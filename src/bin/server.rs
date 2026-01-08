@@ -1,4 +1,4 @@
-//! # Messing with networking in rust
+//! # Messing with networking in rust - Server code
 //! 
 //! This is really fun
 //! 
@@ -6,6 +6,8 @@
 //! ```
 //! cargo doc --open --document-private-items 
 //! ```
+//! 
+//! this code opens a socket on 127.0.0.1:6000 that accepts redis protocol
 
 use tokio::net::{TcpListener, TcpStream};
 use mini_redis::{Connection, Frame};
@@ -18,7 +20,6 @@ use std::sync::{Arc, Mutex};
 
 use tracing::{info, debug};
 
-type DbType = HashMap<String, Vec<u8>> ;
 
 type Db = Arc<Mutex<HashMap<String, Bytes>>>;
 
