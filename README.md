@@ -31,3 +31,21 @@ sends messages via bulk in the format:
 Array([Bulk(b"get"), Bulk(b"aa")])
 Array([Bulk(b"set"), Bulk(b"aa"), Bulk(b"bb")])
 ```
+
+## executing separate binaries
+
+```bash
+cargo run --build echo-server-manual
+cargo run --examples hello-redis
+```
+
+## websocket
+
+using websocat to debug this
+
+installation:
+
+```bash
+    sudo apt install libssl-dev # dependency
+    cargo install websocat
+```
