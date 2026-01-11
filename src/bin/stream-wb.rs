@@ -11,10 +11,10 @@ use tracing::{error, info, warn, debug};
 use serde::{Serialize, Deserialize};
 
 #[derive(Debug, Deserialize)]
-#[serde(tag = "type", rename_all = "camelCase")] // renames all fields to snake case (for incoming messages). it also uses the field "type" to decide which enum vaiant to use
+#[serde(tag = "type", rename_all = "camelCase", rename_all_fields="camelCase")] // renames all fields to snake case (for incoming messages). it also uses the field "type" to decide which enum vaiant to use
 enum FromClientMessage {
     StartAll {
-        // #[serde(rename = "nameS")] // this shouldnt be necessary since we have the rename_all. however the fields are not working
+        // #[serde(rename = "nameS")] // rename a speciifc field. not necessary here bc we use both rename_all and rename_all_fields
         name_s : String
     },
     Text { content : String},
@@ -23,10 +23,10 @@ enum FromClientMessage {
 }
 
 #[derive(Debug, Serialize)]
-#[serde(tag = "type", rename_all = "camelCase")] // renames all fields to camelCase
+#[serde(tag = "type", rename_all = "camelCase", rename_all_fields="camelCase")] // renames all fields to camelCase
 enum FromServerMessage {
     ReplyMessage { 
-        #[serde(rename = "contentMessage")]
+        // #[serde(rename = "contentMessage")]
         content_message : String
     },
     Stop {fields : String},
