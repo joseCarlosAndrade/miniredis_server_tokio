@@ -49,3 +49,28 @@ installation:
     sudo apt install libssl-dev # dependency
     cargo install websocat
 ```
+
+usage:
+
+```bash
+    websocat ws://ipaddress:port
+```
+
+## tracing
+
+using `RUST_LOG` to define the level of logging.
+
+```bash
+RUST_LOG=debug cargo run
+```
+
+- info -> shows info, warn and error
+- debug -> besides the above it also shows debug
+- trace -> shows everything even internal libraries logs
+
+to filter only your crate:
+
+```bash
+RUST_LOG=my_project_name=debug cargo run
+```
+
